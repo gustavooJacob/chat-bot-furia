@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: #000;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .chat-container {
+    background-color: #111;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #0ff;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .chat-header {
+    background-color: #0ff;
+    color: #000;
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .furia-logo {
+    height: 40px;
+    width: 100px;
+  }
+  
+  .chat-box {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: #1a1a1a;
+  }
+  
+  .message {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    max-width: 80%;
+    line-height: 1.4;
+  }
+  
+  .message.bot {
+    background-color: #0ff;
+    color: #000;
+    align-self: flex-start;
+  }
+  
+  .message.user {
+    background-color: #333;
+    color: #fff;
+    align-self: flex-end;
+  }
+  
+  #chat-form {
+    display: flex;
+    border-top: 1px solid #0ff;
+  }
+  
+  #chat-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    background: #222;
+    color: #fff;
+  }
+  
+  #chat-input:focus {
+    outline: none;
+  }
+  
+  button {
+    background-color: #0ff;
+    color: #000;
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #00dddd;
+  }
+  
+  .message.typing {
+    font-style: italic;
+    opacity: 0.7;
+  }  
