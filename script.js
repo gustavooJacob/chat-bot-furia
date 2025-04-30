@@ -1,77 +1,74 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const chatForm = document.getElementById('chat-form');
-    const chatInput = document.getElementById('chat-input');
-    const chatBox = document.getElementById('chat-box');
-  
-    // Sons
-    const sons = [
-      'sounds/go_go_go.mp3',
-      'sounds/rush_b.mp3',
-      'sounds/lets_go.mp3',
-      'sounds/fire_in_the_hole.mp3',
-      'sounds/affirmative.mp3'
-    ];
-  
-    // Palavras-chave e respostas específicas
-    const respostasEspecificas = [
-      { palavra: "furia", resposta: "A FURIA é o melhor time, né? 🐺🔥" },
-      { palavra: "cs", resposta: "Counter-Strike é a nossa casa! 🎯" },
-      { palavra: "jogo", resposta: "Preparado pra mais uma vitória? 🚀" },
-      { palavra: "awp", resposta: "Sniper na mão, perigo na certa! 🔫" },
-      { palavra: "rush", resposta: "RUSH B SEM PARAR!!! 🐾🔥" },
-      { palavra: "torcida", resposta: "Nossa torcida é INCRÍVEL! 💥" },
-      { palavra: "eco", resposta: "Eco? Compra só pistola e confia! 😂" },
-      { palavra: "bala", resposta: "Bala na cabeça é a call! 🎯" },
-      { palavra: "campeonato", resposta: "Vamos buscar esse título! 🏆" },
-      { palavra: "fã", resposta: "A FURIA tem a torcida mais braba! 🐺" }
-    ];
-  
-    // Resposta padrão se não encontrar nenhuma palavra-chave
-    const respostaPadrao = "Confia na call, que é sucesso! 🚀";
-  
-    // Função para adicionar mensagem
-    function adicionarMensagem(texto, classe) {
-      const div = document.createElement('div');
-      div.classList.add('message', classe);
-      div.textContent = texto;
-      chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-  
-    // Função para tocar som aleatório
-    function tocarSom() {
-      const somEscolhido = sons[Math.floor(Math.random() * sons.length)];
-      const audio = new Audio(somEscolhido);
-      audio.volume = 0.5;
-      audio.play();
-    }
-  
-    // Função para gerar resposta baseada no que o usuário escreveu
-    function gerarResposta(mensagemUsuario) {
-      const mensagem = mensagemUsuario.toLowerCase();
-      for (const item of respostasEspecificas) {
-        if (mensagem.includes(item.palavra)) {
-          return item.resposta;
-        }
-      }
-      return respostaPadrao;
-    }
-  
-    // Quando o usuário enviar
-    chatForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const mensagem = chatInput.value.trim();
-  
-      if (mensagem !== '') {
-        adicionarMensagem(mensagem, 'user');
-        chatInput.value = '';
-  
-        setTimeout(() => {
-          const resposta = gerarResposta(mensagem);
-          adicionarMensagem(resposta, 'bot');
-          tocarSom();
-        }, 600);
-      }
-    });
-  });
-  
+function sendMessage() {
+  const input = document.getElementById("user-input");
+  const message = input.value.trim();
+  if (!message) return;
+
+  appendMessage(message, "user");
+  input.value = "";
+
+  showTypingIndicator();
+
+  setTimeout(() => {
+    const botReply = generateResponse(message);
+    removeTypingIndicator();
+    appendMessage(botReply, "bot");
+  }, 1000);
+}
+
+function appendMessage(message, sender) {
+  const chatBox = document.getElementById("chat-box");
+  const msgElement = document.createElement("div");
+  msgElement.className = `message ${sender}`;
+  msgElement.innerText = message;
+  chatBox.appendChild(msgElement);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function showTypingIndicator() {
+  const chatBox = document.getElementById("chat-box");
+  const typing = document.createElement("div");
+  typing.className = "message bot typing";
+  typing.innerText = "Digitando...";
+  typing.id = "typing-indicator";
+  chatBox.appendChild(typing);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function removeTypingIndicator() {
+  const typing = document.getElementById("typing-indicator");
+  if (typing) typing.remove();
+}
+
+function generateResponse(msg) {
+  const message = msg.toLowerCase();
+
+  if (message.includes("furia") || message.includes("quem é") || message.includes("história")) {
+    return "A FURIA é uma organização brasileira de esports conhecida mundialmente, especialmente no CS:GO!";
+  }
+
+  if (message.includes("jogadores") || message.includes("elenco") || message.includes("time atual")) {
+    return "O time atual de CS da FURIA conta com grandes nomes! Dá uma olhada no nosso site oficial para ver a lineup atualizada.";
+  }
+
+  if (message.includes("último jogo") || message.includes("última partida") || message.includes("resultado")) {
+    return "No último jogo, a FURIA deu show! Confira os detalhes no nosso Twitter oficial!";
+  }
+
+  if (message.includes("próxima") || message.includes("quando joga") || message.includes("agenda")) {
+    return "A próxima partida da FURIA está chegando! Fique ligado no nosso Instagram para não perder nada!";
+  }
+
+  if (message.includes("títulos") || message.includes("conquistas") || message.includes("campeonatos")) {
+    return "A FURIA já conquistou vários títulos importantes no cenário de CS. Orgulho nacional!";
+  }
+
+  if (message.includes("sou fã") || message.includes("amo a furia") || message.includes("torcida") || message.includes("força furia")) {
+    return "É isso aí, FURIOSO! A comunidade é o coração da FURIA. Vamos pra cima!";
+  }
+
+  if (message.includes("oi") || message.includes("olá") || message.includes("e aí")) {
+    return "Oi! Como posso ajudar você hoje? Pergunte algo sobre a FURIA ou nossos jogadores!";
+  }
+
+  return "Não entendi muito bem. Tente perguntar sobre jogadores, partidas ou conquistas da FURIA!";
+}
