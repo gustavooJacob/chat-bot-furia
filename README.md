@@ -30,13 +30,6 @@ Criar uma interface conversacional para os fãs do time de CS:GO da FURIA. A pro
 
 ---
 
-## 📷 Demonstração
-
-> 🎥 Vídeo de até 3 minutos apresentando o funcionamento do projeto:  
-> [🔗 Link para o vídeo no YouTube](https://www.youtube.com/) _(insira aqui depois de subir)_
-
----
-
 ## 🚀 Como Executar o Projeto
 
 1. Clone este repositório:
