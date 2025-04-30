@@ -42,32 +42,36 @@ function removeTypingIndicator() {
 function generateResponse(msg) {
   const message = msg.toLowerCase();
 
-  if (message.includes("furia") || message.includes("quem é") || message.includes("história")) {
-    return "A FURIA é uma organização brasileira de esports conhecida mundialmente, especialmente no CS:GO!";
+  if (message.includes("sou fã da furia") || message.includes("gosto da furia") || message.includes("amo a furia") || message.includes("torço pela furia")) {
+    return "É isso aí, FURIOSO! A comunidade é o coração da FURIA. Vamos pra cima!";
   }
-
-  if (message.includes("jogadores") || message.includes("elenco") || message.includes("time atual")) {
-    return "O time atual de CS da FURIA conta com grandes nomes! Dá uma olhada no nosso site oficial para ver a lineup atualizada.";
-  }
-
+  
   if (message.includes("último jogo") || message.includes("última partida") || message.includes("resultado")) {
     return "No último jogo, a FURIA deu show! Confira os detalhes no nosso Twitter oficial!";
   }
+  
+  if (message.includes("jogadores") || message.includes("quem joga na furia") || message.includes("quem são os jogadores") || message.includes("lineup")) {
+    return "Atualmente, os jogadores da FURIA são: FalleN, yuurih, YEKINDAR, KSCERATO e molodoy. Eles são incríveis!";
+  }
 
-  if (message.includes("próxima") || message.includes("quando joga") || message.includes("agenda")) {
+  if (message.includes("próximo jogo") || message.includes("quando joga") || message.includes("agenda")) {
     return "A próxima partida da FURIA está chegando! Fique ligado no nosso Instagram para não perder nada!";
   }
-
-  if (message.includes("títulos") || message.includes("conquistas") || message.includes("campeonatos")) {
-    return "A FURIA já conquistou vários títulos importantes no cenário de CS. Orgulho nacional!";
-  }
-
+  
   if (message.includes("sou fã") || message.includes("amo a furia") || message.includes("torcida") || message.includes("força furia")) {
     return "É isso aí, FURIOSO! A comunidade é o coração da FURIA. Vamos pra cima!";
   }
-
+  
   if (message.includes("oi") || message.includes("olá") || message.includes("e aí")) {
     return "Oi! Como posso ajudar você hoje? Pergunte algo sobre a FURIA ou nossos jogadores!";
+  }
+  
+  if (message.includes("títulos") || message.includes("campeonatos ganhos") || message.includes("conquistas")) {
+    return "A FURIA já conquistou vários títulos importantes no cenário de CS. Tais como: Elisa Masters Espoo 2023, IEM New York 2020 North America, ESL Pro League Season 12 North America e a DreamHack Masters Spring 2020 - North America. Orgulho nacional!";
+  }
+  
+  if (message.includes("furia") || message.includes("quem é") || message.includes("história")) {
+    return "A FURIA é uma organização brasileira de esports conhecida mundialmente, especialmente no CS:GO!";
   }
 
   return "Não entendi muito bem. Tente perguntar sobre jogadores, partidas ou conquistas da FURIA!";
